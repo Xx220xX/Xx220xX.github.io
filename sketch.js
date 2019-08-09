@@ -1,14 +1,19 @@
 // to run ctrl alt l
   // to stop ctrl alt q
-function setup() {
-  // put setup code here
-  createCanvas(500,500)
-  background(255,0,0)
-  let s = 'The quick brown fox jumped over the lazy dog.';
-  fill(50);
-  text(s, 10, 10, 70, 80);
+let inconsolata;
+function preload() {
+  inconsolata = loadFont('assets/inconsolata.otf');
 }
-
+function setup() {
+  createCanvas(100, 100, WEBGL);
+  textFont(inconsolata);
+  textSize(width / 3);
+  textAlign(CENTER, CENTER);
+}
 function draw() {
-  // put drawing code here
+  background(0);
+  let time = millis();
+  rotateX(time / 1000);
+  rotateZ(time / 1234);
+  text('Xx220xX', 0, 0);
 }
