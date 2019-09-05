@@ -96,7 +96,7 @@ function addC(bt){
               (a)=>{pop();},
              'Adicionar',
              (a,lt)=>{
-              ponto = createVector(int(lt[0]),-int(lt[1]),int(lt[2]));
+              ponto = createVector(int(lt[0]),int(lt[1]),int(lt[2]));
               cargas[max] = new Q(ponto,int(lt[3]));
               max ++; 
               pauseDraw = false;
@@ -180,13 +180,13 @@ function draw() {
   line(0, 0, 0, 0,0,height*0.1);
   
   stroke(170,216,250);//azul y
-  line(0, 0, 0, 0,-height*0.1,0);
+  line(0, 0, 0, 0,height*0.1,0);
   
   noStroke();
   fill(170,216,250)
   push();
-    translate(0,-height/10,0);
-    rotateX(180)
+    translate(0,height/10,0);
+   // rotateX(180)
     cone(width*0.005, height*0.01);
   pop();
   
