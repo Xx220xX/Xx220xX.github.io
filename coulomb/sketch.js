@@ -96,7 +96,7 @@ function addC(bt){
               (a)=>{pop();},
              'Adicionar',
              (a,lt)=>{
-              ponto = createVector(int(lt[0]),int(lt[1]),int(lt[2]));
+              ponto = createVector(int(lt[0]),-int(lt[1]),int(lt[2]));
               cargas[max] = new Q(ponto,int(lt[3]));
               max ++; 
               pauseDraw = false;
@@ -128,7 +128,9 @@ function getE(bt){
 
 
 function setup() {
-  var canvas = createCanvas(displayWidth/4, displayHeight/4, WEBGL);
+  var canvas = createCanvas(displayWidth, displayHeight, WEBGL);
+  
+  //canvas.position(displayWidth/4,displayHeight/4);
   var add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
   add.click = false;
@@ -156,6 +158,8 @@ function setup() {
 
 let k = 0 ;
 function draw() {
+  
+  scale(5);
   if(pauseDraw){
     return;
   }
@@ -180,13 +184,13 @@ function draw() {
   line(0, 0, 0, 0,0,height*0.1);
   
   stroke(170,216,250);//azul y
-  line(0, 0, 0, 0,height*0.1,0);
+  line(0, 0, 0, 0,-height*0.1,0);
   
   noStroke();
   fill(170,216,250)
   push();
-    translate(0,height/10,0);
-   // rotateX(180)
+    translate(0,-height/10,0);
+    rotateX(180)
     cone(width*0.005, height*0.01);
   pop();
   
@@ -205,6 +209,9 @@ function draw() {
   pop();
   pop();
   k+=0.1;
+  if(k>100){
+    k=0;
+  }
 }
 
 
