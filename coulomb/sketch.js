@@ -129,7 +129,7 @@ function getE(bt){
 
 function setup() {
   var canvas = createCanvas(displayWidth, displayHeight, WEBGL);
-  
+  rectMode(CENTER);
   //canvas.position(displayWidth/4,displayHeight/4);
   var add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
@@ -157,9 +157,14 @@ function setup() {
 
 
 let k = 0 ;
+var zoom = 1.00;
+var zMin = 0.05;
+var zMax = 9.00;
+var sensativity = 0.005;
+ 
 function draw() {
   
-  scale(5);
+   scale(zoom);
   if(pauseDraw){
     return;
   }
@@ -212,6 +217,12 @@ function draw() {
   if(k>100){
     k=0;
   }
+}
+function mouseWheel(event) {
+  zoom -= sensativity * event.delta;
+  zoom = constrain(zoom, zMin, zMax);
+  //uncomment to block page scrolling
+  return false;
 }
 
 
