@@ -1,5 +1,6 @@
 
 let cargas = [];
+
 let max = 2;
 cargas.draw = function() {
   background(255);
@@ -133,6 +134,7 @@ function setup() {
   //canvas.position(displayWidth/4,displayHeight/4);
   var add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
+  var delte = createButton('apagar cargas');
   add.click = false;
   add.mousePressed(()=>{
     if(add.click||getCampo.click) return;
@@ -143,7 +145,9 @@ function setup() {
     getCampo.click = true;
     getE(getCampo)});
   add.position(0,0);
-  getCampo.position(add.x+add.width,0);
+  getCampo.position(add.x+add.width+3,0);
+  delte.position(getCampo.x+getCampo.width+3,0)
+  delte.mousePressed(()=>{max = 0;cargas.splice(0, cargas.length);});
   
  
   for (let i =0; i<max; i++) {
