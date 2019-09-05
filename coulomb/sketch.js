@@ -128,7 +128,7 @@ function getE(bt){
 
 
 function setup() {
-  var canvas = createCanvas(displayWidth, displayHeight, WEBGL);
+  var canvas = createCanvas(displayWidth/4, displayHeight/4, WEBGL);
   var add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
   add.click = false;
