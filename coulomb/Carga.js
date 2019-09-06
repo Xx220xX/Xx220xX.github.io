@@ -1,6 +1,37 @@
+function  Vector(x,y,z){
+  if(isNaN(x))x=0
+  if(isNaN(y))y=0
+  if(isNaN(z))z=0
+  let self = {x:x,
+          y:y,
+          z:z,
+         add:null,
+          mag:null,
+          div:null,
+          sub:null
+         }
+    
+   
+  self.mag =function( ){
+    return pow(self.x*self.x+self.y*self.y+self.z*self.z,0.5);
+  };
+  
+  self.sub = function (other){
+    return Vector(self.x+other.x,self.y+other.y,self.z+other.z);
+  };
+   self.add = function (other){
+    return Vector(self.x-other.x,self.y-other.y,self.z-other.z);
+  };
+  self.div= function(v){
+    return Vector(self.x/v,self.y/v,self.z/v);
+  };
+  return self;
+  
+}
 class Q {
   
   constructor(point, charge) {
+    
     this.point = point;
     this.c = charge;
   }
@@ -11,6 +42,7 @@ class Q {
       fill(255, 0, 0);
     }
     push();
+   
     translate(this.point.x, this.point.y, this.point.z);
     sphere(5);
     pop();
