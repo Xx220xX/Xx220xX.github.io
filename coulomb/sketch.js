@@ -97,13 +97,13 @@ function addC(bt){
               (a)=>{pop();},
              'Adicionar',
              (a,lt)=>{
-              ponto = createVector(int(lt[0]),-int(lt[1]),int(lt[2]));
-              cargas[max] = new Q(ponto,int(lt[3]));
+              ponto =  Vector(int(lt[0]),-int(lt[1]),int(lt[2]));
+              cargas[max] =  new Q(ponto,int(lt[3]));
               max ++; 
               pauseDraw = false;
               a.show("carga adicionada :D");
               a.forceBack();
-          },()=>{console.log("forcado");
+          },()=>{
     pauseDraw = false;bt.click = false;});     
 }
 function getE(bt){
@@ -113,11 +113,12 @@ function getE(bt){
               (a)=>{pop();},
              'calcular',
              (a,lt)=>{
-              ponto = createVector(int(lt[0]),                                                   int(lt[1]),                                                   int(lt[2]));
+              ponto =   Vector(int(lt[0]), int(lt[1]),                                                   int(lt[2]));
     
-        let E = createVector(0,0,0);
+        let E =  Vector(0,0,0);
         for (let i =0; i<max; i++) {
-            E.add(cargas[i].campo(ponto));
+          
+            E = E.add(cargas[i].campo(ponto));
         }
                 
           a.show("("+E.x+" , "+E.y+" , "+E.z+"), |E| = "+E.mag());
@@ -151,8 +152,8 @@ function setup() {
   
  
   for (let i =0; i<max; i++) {
-    /*cargas[i] = new Q(createVector(random(-width, width), random(-height, height), random(-height, height)), random(-10, 10));*/
-    cargas[i] = new Q(createVector(0,0,0),1);
+    /*cargas[i] =  Q(createVector(random(-width, width), random(-height, height), random(-height, height)), random(-10, 10));*/
+    cargas[i] = new Q( Vector(0,0,0),1);
   }
   angleMode(DEGREES);
   cargas.draw();
