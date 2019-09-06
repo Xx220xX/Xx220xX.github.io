@@ -90,10 +90,10 @@ function addC(bt){
               (a)=>{pop();},
              'Adicionar',
              (a,lt)=>{
-              ponto =  Vector(int(lt[0]),-int(lt[1]),int(lt[2]));
+              ponto =  Vector(float(lt[0]),float(lt[1]),float(lt[2]));
     
-              if(int(lt[3])==0 || isNaN(int(lt[3]))){return;}
-              cargas[max] =  new Q(ponto,int(lt[3]));
+              if(float(lt[3])==0 || isNaN(int(lt[3]))){return;}
+              cargas[max] =  new Q(ponto,float(lt[3]));
               max ++; 
               pauseDraw = false;
               a.show("carga adicionada :D");
@@ -108,7 +108,7 @@ function getE(bt){
               (a)=>{pop();},
              'calcular',
              (a,lt)=>{
-              ponto =   Vector(int(lt[0]), int(lt[1]),                                                   int(lt[2]));
+              ponto =   Vector(float(lt[0]), float(lt[1]),float(lt[2]));
     
         let E =  Vector(0,0,0);
         for (let i =0; i<max; i++) {
