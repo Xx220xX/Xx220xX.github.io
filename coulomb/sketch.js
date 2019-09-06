@@ -10,14 +10,7 @@ cargas.draw = function() {
   }
 };
 let pauseDraw=false;
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
+
 function drawOptions(x,y,x2,y2,titulo,
                       n_options,
                       textos/*para cada opcao*/,
@@ -98,6 +91,8 @@ function addC(bt){
              'Adicionar',
              (a,lt)=>{
               ponto =  Vector(int(lt[0]),-int(lt[1]),int(lt[2]));
+    
+              if(int(lt[3])==0 || isNaN(int(lt[3]))){return;}
               cargas[max] =  new Q(ponto,int(lt[3]));
               max ++; 
               pauseDraw = false;
