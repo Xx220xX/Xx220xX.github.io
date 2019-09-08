@@ -44,7 +44,8 @@ class Tela {
           // verificar se o pixel vai ocupar uma posicao invalida
           if(i+m.pos_i>=this.mat.row||j+m.pos_j<0||j+m.pos_j>=this.mat.col){
               // NAO PODE GIRAR
-              
+              console.log(i+m.pos_i<0,i+m.pos_i>=this.mat.row ,j+m.pos_j<0,j+m.pos_j>=this.mat.col);
+              console.log(i, m.pos_i ,j,m.pos_j);
               m.mat = m.last;
               return -1;
           } 
@@ -64,11 +65,11 @@ class Tela {
     for (let i =0; i<m.row; i++) {
       for (let j =0; j<m.col; j++) {
         if(i+m.pos_i<0||i+m.pos_i>=this.mat.row ||j+m.pos_j<0||j+m.pos_j>=this.mat.col){
-                    
+                    console.log('pulei');
           continue;
         }
         if(m.last[i][j].fill){
-          
+          console.log('achei');
           this.mat.mat[i+m.pos_i][j+m.pos_j] = this.background;
       
         }        

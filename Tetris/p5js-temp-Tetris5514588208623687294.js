@@ -81,7 +81,7 @@ function draw() {
     fill(0);
      textSize(40);
     text('Pressione qualquer tecla', width/5, height/2+40);
-    text('para jogar novamente', width/5, height/2+80);
+    text('para começar novamente', width/5, height/2+80);
     pop();
     return;
   }
