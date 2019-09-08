@@ -4,7 +4,7 @@ class Matrix {
     this.pos_j = int(pos_j);
     this.last_pos_i = 999;
     this.last_pos_j = 999;
-    this.next.push(this);
+    //this.next.push(this);
 
     this.row = int(row);
     this.col = int(col);
