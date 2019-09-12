@@ -3,7 +3,18 @@
 var easycam ;
 let cargas = [];
 
-let max = 2;
+ let scale =100;
+
+
+cargas.getE = function(ponto){
+  let E = Vetor(0,0,0);
+  for (var i = 0; i < cargas.length; i++) {
+    print(E);
+    E = E.add(cargas[i].campo(ponto));
+  }
+  return E;
+}
+let max = 4;
 cargas.draw = function() {
   background(255);
   noStroke();
@@ -86,13 +97,13 @@ function drawOptions(x,y,x2,y2,titulo,
   }
 }
 function addC(bt){
-  drawOptions(25,60,40,20,'Adicionar carga',4,
+  drawOptions(25,80,40,20,'Adicionar carga',4,
               ['x','y','z','intensidade'],
               ()=>{push(); },
               (a)=>{pop();},
              'Adicionar',
              (a,lt)=>{
-              ponto =  Vector(float(lt[0]),float(lt[1]),float(lt[2]));
+              ponto =  Vetor(float(lt[0]),float(lt[1]),float(lt[2]));
     
               if(float(lt[3])==0 || isNaN(int(lt[3]))){return;}
               cargas[max] =  new Q(ponto,float(lt[3]));
@@ -104,20 +115,15 @@ function addC(bt){
     pauseDraw = false;bt.click = false;});     
 }
 function getE(bt){
-   drawOptions(25,60,40,20,'Campo Eletrico',3,
+   drawOptions(25,80,40,20,'Campo Eletrico',3,
               ['x','y','z'],
               ()=>{push(); },
               (a)=>{pop();},
              'calcular',
              (a,lt)=>{
-              ponto =   Vector(float(lt[0]), float(lt[1]),float(lt[2]));
+              ponto =   Vetor(float(lt[0]), float(lt[1]),float(lt[2]));
     
-        let E =  Vector(0,0,0);
-        for (let i =0; i<max; i++) {
-          
-            E = E.add(cargas[i].campo(ponto));
-        }
-                
+        let E = cargas.getE(ponto)     
           a.show("("+E.x+" , "+E.y+" , "+E.z+"), |E| = "+E.mag());
               pauseDraw = false;
             },()=>{pauseDraw = false;bt.click = false;});                            
@@ -125,110 +131,77 @@ function getE(bt){
 }
 
 
-
+var add;
+var div;
 function setup() {
-  var canvas = createCanvas(displayWidth, displayHeight, WEBGL);
+  var canvas = createCanvas(800, 800, WEBGL);
   rectMode(CENTER);
   
   easycam = createEasyCam();
-  
+  div = createDiv();
+
   //canvas.position(displayWidth/4,displayHeight/4);
-  var add = createButton('Adicionar carga');
+   add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
   var delte = createButton('apagar cargas');
+  var scale_ma =  createButton('+');
+  var scale_mi =  createButton('-');
+
+    add.size(100,100);
+    getCampo.size(100,100);
+    delte.size(100,100);
+    scale_ma.size(50,50);
+    scale_mi.size(50,50);
+   
+  scale_ma.mousePressed(()=>{ scale +=10;;
+     scale = constrain(scale, 90,1000);
+      div.html('escala: '+scale,false);});
+   scale_mi.mousePressed(()=>{ scale -=10;;
+     scale = constrain(scale, 90,1000);
+      div.html('escala: '+scale,false);});
+
   add.click = false;
   add.mousePressed(()=>{
     if(add.click||getCampo.click) return;
     add.click = true;
-    addC(add)});
+    addC(add);});
   getCampo.mousePressed(()=>{
     if(getCampo.click||add.click) return;
     getCampo.click = true;
-    getE(getCampo)});
+    getE(getCampo);
+    });
   add.position(0,0);
   getCampo.position(add.x+add.width+3,0);
   delte.position(getCampo.x+getCampo.width+3,0)
   delte.mousePressed(()=>{max = 0;cargas.splice(0, cargas.length);});
   
  
-  for (let i =0; i<max; i++) {
+ // for (let i =0; i<max; i++) {
     /*cargas[i] =  Q(createVector(random(-width, width), random(-height, height), random(-height, height)), random(-10, 10));*/
-    cargas[i] = new Q( Vector(0,0,0),1);
-  }
-  angleMode(DEGREES);
-  cargas.draw();
-  
-}
-
-
-let k = 0 ;
-var zoom = 1.00;
-var zMin = 0.05;
-var zMax = 9.00;
-var sensativity = 0.005;
+    cargas[0] = new Q( Vetor(1,1,0),-2);
+    cargas[1] = new Q( Vetor(-1,-1,0),-1);
+    cargas[2] = new Q( Vetor(-1,1,0),1);
+    cargas[3] = new Q( Vetor(1,-1,0),2);
+ // }
  
-function draw() {
-  
-   scale(zoom);
-  if(pauseDraw){
-    return;
-  }
-  /*if(random()%4){
-      rotateX(k);
-  }
-  
-  if(random()%4){
-      rotateY(k);
-  }
-  
-  if(random()%4){
-      rotateZ(k);
-  }
-  */
   cargas.draw();
   
-  push();
-  stroke(144,238,144);//verde x
-  line(0, 0,0, width*0.1, 0,0);
-  
-  stroke(255,105,97);//vermelho z
-  line(0, 0, 0, 0,0,height*0.1);
-  
-  stroke(170,216,250);//azul y
-  line(0, 0, 0, 0,-height*0.1,0);
-  
-  noStroke();
-  fill(170,216,250)
-  push();
-    translate(0,-height/10,0);
-    rotateX(180)
-    cone(width*0.005, height*0.01);
-  pop();
-  
-  push()
-    fill(144,238,144);
-    translate(width*0.1,0,0);
-    rotateZ(-90);
-    cone(width*0.005, width*0.01);
-  pop();
-  
-  push()
-    fill(255,105,97);
-    translate(0,0,height*0.1);
-    rotateX(90);
-    cone(width*0.005, width*0.01);
-  pop();
-  pop();
-  k+=0.1;
-  if(k>100){
-    k=0;
-  }
 }
-function mouseWheel(event) {
-  zoom -= sensativity * event.delta;
-  zoom = constrain(zoom, zMin, zMax);
-  //uncomment to block page scrolling
-  return false;
+
+
+
+function draw() {
+  background(210);
+  cargas.draw();
+  push();
+  stroke(0,210,0);
+  line(0,0,0,scale,0,0);
+  stroke(210,0,0);
+  line(0,0,0,0,scale,0);
+  stroke(0,0,210);
+   line(0,0,0,0,0,scale);
+  pop();
+  
 }
 
 

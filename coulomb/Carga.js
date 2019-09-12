@@ -1,4 +1,4 @@
-function  Vector(x,y,z){
+function  Vetor(x,y,z){
   if(isNaN(x))x=0
   if(isNaN(y))y=0
   if(isNaN(z))z=0
@@ -17,13 +17,13 @@ function  Vector(x,y,z){
   };
   
   self.sub = function (other){
-    return Vector(self.x+other.x,self.y+other.y,self.z+other.z);
+    return Vetor(self.x+other.x,self.y+other.y,self.z+other.z);
   };
    self.add = function (other){
-    return Vector(self.x-other.x,self.y-other.y,self.z-other.z);
+    return Vetor(self.x-other.x,self.y-other.y,self.z-other.z);
   };
   self.div= function(v){
-    return Vector(self.x/v,self.y/v,self.z/v);
+    return Vetor(self.x/v,self.y/v,self.z/v);
   };
   return self;
   
@@ -48,9 +48,9 @@ class Q {
     pop();
   }
    campo(point){
-    let E = point.sub(this.point);
+    let E = this.point.sub(point);
     if(E.mag()==0){return E;}
-    E = E.div(pow(E.mag(),3)*(4*PI*8.85*pow(10,-12)));
+    E = E.div(1/this.c*pow(E.mag(),3)*(4*PI*8.85*pow(10,-12)));
     return E;   
   }
   static F(self,other){
