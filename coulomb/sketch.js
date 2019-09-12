@@ -178,10 +178,10 @@ function setup() {
  
  // for (let i =0; i<max; i++) {
     /*cargas[i] =  Q(createVector(random(-width, width), random(-height, height), random(-height, height)), random(-10, 10));*/
-    cargas[0] = new Q( Vetor(1,1,0),-2);
-    cargas[1] = new Q( Vetor(-1,-1,0),-1);
-    cargas[2] = new Q( Vetor(-1,1,0),1);
-    cargas[3] = new Q( Vetor(1,-1,0),2);
+    cargas[0] = new Q( Vetor(10,10,0),-2);
+    cargas[1] = new Q( Vetor(-10,-10,0),-1);
+    cargas[2] = new Q( Vetor(-10,10,0),1);
+    cargas[3] = new Q( Vetor(10,-10,0),2);
  // }
  
   cargas.draw();
