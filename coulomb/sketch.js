@@ -1,4 +1,6 @@
 
+
+var easycam ;
 let cargas = [];
 
 let max = 2;
@@ -127,6 +129,9 @@ function getE(bt){
 function setup() {
   var canvas = createCanvas(displayWidth, displayHeight, WEBGL);
   rectMode(CENTER);
+  
+  easycam = createEasyCam();
+  
   //canvas.position(displayWidth/4,displayHeight/4);
   var add = createButton('Adicionar carga');
   var getCampo = createButton('Campo eletrico');
@@ -168,7 +173,7 @@ function draw() {
   if(pauseDraw){
     return;
   }
-  if(random()%4){
+  /*if(random()%4){
       rotateX(k);
   }
   
@@ -179,6 +184,7 @@ function draw() {
   if(random()%4){
       rotateZ(k);
   }
+  */
   cargas.draw();
   
   push();
