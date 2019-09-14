@@ -134,7 +134,7 @@ function getE(bt){
 var add;
 var div;
 function setup() {
-  var canvas = createCanvas(800, 800, WEBGL);
+  var canvas = createCanvas(500, 500, WEBGL);
   rectMode(CENTER);
   
   easycam = createEasyCam();
@@ -191,7 +191,7 @@ function setup() {
 
 
 function draw() {
-  background(210);
+  background(180);
   cargas.draw();
   push();
   stroke(0,210,0);
