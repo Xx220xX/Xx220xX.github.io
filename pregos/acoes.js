@@ -71,7 +71,7 @@ partes[2]= function(numeroPorVez = 30){
 		if(j>=pregos.length){
 			for (let i = 0; i < ib.length; i++) {
 				if(pregos[ib[i]].line.existe){
-					print('lol');
+					
 					line(pregos[ib[i]].x,pregos[ib[i]].y,pregos[ib[i]].line.x,pregos[ib[i]].line.y);
 					delLine(img,pregos[ib[i]].x,pregos[ib[i]].y,pregos[ib[i]].line.x,pregos[ib[i]].line.y);
 				}
