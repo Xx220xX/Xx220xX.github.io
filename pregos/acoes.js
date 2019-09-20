@@ -5,7 +5,7 @@ partes[0] = (() => {
   last =1;
 });
 
-partes[1] = ((f=false,numeroPorVez = 10) => { //organiza-los
+partes[1] = ((f=false,numeroPorVez = n/10+1) => { //organiza-los
   let d_teta = 2 * PI / n;
   let dr = pregos.draw;
   let i = 0;
@@ -31,7 +31,7 @@ partes[1] = ((f=false,numeroPorVez = 10) => { //organiza-los
   };
 
 });
-partes[2]= function(numeroPorVez = 30){
+partes[2]= function(numeroPorVez = 2){
 	pregos.startLine();
 	let aux = [];
 	for (let i =0 ;i<pregos.length;i++){
