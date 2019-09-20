@@ -91,8 +91,7 @@ let f = ft(x0,y0,xf,yf);
     	
   	}
   	imgbuff.updatePixels();
-  	print('ok')
-
+  	
 }
 function getMidLine(image,x0,y0,xf,yf,pontos=image.width){
   let soma = 0;//minimo valor possivel;
