@@ -16,10 +16,10 @@ let filter = [2,230];
 let inverse = true;
 
 let iteracao = 0;
-let img2;
+//let img2;
 function preload() {
-  img2 = loadImage('imagens/hehe.jpg');
-  img = loadImage('imagens/hehe.jpg');
+ // img2 = loadImage('imagens/hehe.jpg');
+  img = loadImage('imagens/homemdeferro.jpg');
 
 }
 
@@ -31,10 +31,10 @@ function keyPressed() {
   } else if (keyCode === ENTER) {
     partes[acao]();
   }else*/ if(key ==='a'){
-    img2.loadPixels();
+  /*  img2.loadPixels();
     img = img2;
 
-
+*/
 
   }
 }
