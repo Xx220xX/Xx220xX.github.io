@@ -31,7 +31,7 @@ partes[1] = ((f=false,numeroPorVez = n/10+1) => { //organiza-los
   };
 
 });
-partes[2]= function(numeroPorVez = 2){
+partes[2]= function(numeroPorVez = n){
 	pregos.startLine();
 	let aux = [];
 	for (let i =0 ;i<pregos.length;i++){

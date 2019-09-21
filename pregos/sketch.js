@@ -19,7 +19,7 @@ let iteracao = 0;
 //let img2;
 function preload() {
  // img2 = loadImage('imagens/hehe.jpg');
-  img = loadImage('imagens/im.jpg');
+  img = loadImage('imagens/batmam.png');
 
 }
 
