@@ -1,6 +1,4 @@
-let n = 160;
-let n_padrao = 10;
-
+let n = 120;
 let pregos;
 let radius;
 let radius_circle;
@@ -15,13 +13,13 @@ let last = 0;
 let stop =false;
 
 let filter = [2,230];
-let inverse = false;
+let inverse = true;
 
 let iteracao = 0;
 //let img2;
 function preload() {
  // img2 = loadImage('imagens/hehe.jpg');
-  img = loadImage('imagens/batmam.png');
+  img = loadImage('imagens/homemdeferro.jpg');
 
 }
 
@@ -32,21 +30,15 @@ function keyPressed() {
     acao = constrain(acao + 1, 0,  partes.length-1);
   } else if (keyCode === ENTER) {
     partes[acao]();
-  }else*/ 
-  if(key ==='a'){
+  }else*/ if(key ==='a'){
   /*  img2.loadPixels();
     img = img2;
 
 */
 
   }
- 
 }
-function keyTyped() {
-  if (key === 's') {
-    imgFINAL.save('photo', 'png');
-  }
-}
+
 function setup() {
   createCanvas(600, 600);
   radius = int(sqrt(width * width / 16 + height * height / 16));
@@ -81,8 +73,8 @@ function draw() {
   push();
   pregos.draw();
   pop();
-   //image(imgFINAL, 0, 0);
-  txt.html(acao + " raio: " + radius + "<p>"+iteracao+"</p>" + int(getFrameRate()) + " fps  phase: "+defasagem);
+   image(imgFINAL, 0, 0);
+  txt.html(acao + " raio: " + radius + "<p></p>" + int(getFrameRate()) + " fps  phase: "+defasagem);
  if(stop){
  	return;
  }

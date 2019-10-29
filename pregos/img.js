@@ -24,7 +24,7 @@ if(x<0||x>=image.width || y<0||y>=image.height  ){
     };*/
     let p =  image.get(x, y);
     if(inverse){
-	     p.cinza = 255-(p[0]+p[1]+p[2])/3;
+	     p.cinza = map((p[0]+p[1]+p[2])/3,0,255,255,0);
 	 }else{
 	 	p.cinza =(p[0]+p[1]+p[2])/3;
 	 }

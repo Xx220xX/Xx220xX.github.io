@@ -55,8 +55,11 @@ class Prego {
   endLines(){
   	this.line.x0=this.x;
   	this.line.y0=this.y;
+
   	this.lines.push(this.line);
   	this.line = generateLine(0,0);
+
+
   }
 }
 

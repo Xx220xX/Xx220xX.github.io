@@ -5,13 +5,11 @@ partes[0] = (() => {
   last =1;
 });
 
-partes[1] = ((f=false,numeroPorVez = n/10+1) => { //organiza-los
-
+partes[1] = ((f=false,numeroPorVez = 10) => { //organiza-los
   let d_teta = 2 * PI / n;
   let dr = pregos.draw;
   let i = 0;
   let cor = false;
-  let numeroPorVez0 = numeroPorVez
   pregos.draw = () => {
   	while(numeroPorVez>0){
 	    pregos[i].x = radius_circle * cos(d_teta * i+defasagem)+radius;
@@ -29,15 +27,13 @@ partes[1] = ((f=false,numeroPorVez = n/10+1) => { //organiza-los
 	    }
 	  	numeroPorVez--;
 	}
-	numeroPorVez = numeroPorVez0;
+	numeroPorVez = 10;
   };
 
 });
-
-
-partes[2]= function(numeroPorVez = n_padrao){
+partes[2]= function(numeroPorVez = 30){
 	pregos.startLine();
-	/*let aux = [];
+	let aux = [];
 	for (let i =0 ;i<pregos.length;i++){
 		aux.push(i);
 	}
@@ -46,20 +42,16 @@ partes[2]= function(numeroPorVez = n_padrao){
 		let i = int(random(0,aux.length));
 		pregoBase.push(aux[i]);
 		aux.splice(i, 1); 
-	}*/
-	let pregoBase =randomicVector(0,pregos.length-1);
-	console.log(pregoBase)
-   	let ib = pregoBase.splice(0,numeroPorVez);
+	}
+   let ib = pregoBase.splice(0,numeroPorVez);
 	let ldraw = pregos.draw ;
 	let j=0;
 
 	let tmp =0; // soma temporaria
-
-	let alet =10;//int(random(pregoBase.length/2,pregoBase.length));
-	let vetj = randomicVector(0,pregos.length-1);
-	//j = vetj.pop();
+	let alet =int(random(aux.length/2,aux.length));
 
 	pregos.draw = function (){
+ 
 		for (let i = 0; i < ib.length; i++) {
 			if(ib[i]== j){
 				continue;
@@ -74,15 +66,9 @@ partes[2]= function(numeroPorVez = n_padrao){
 			stroke(255,0,0);
 			line(pregos[ib[i]].x,pregos[ib[i]].y,pregos[j].x,pregos[j].y);
 		}
-
 		j++;
-		/*if(vetj.length>0){
-			j = vetj.pop();
-		}*/
-
 		ldraw();
 		if(j>=pregos.length){
-		//if(vetj.length<=0){
 			for (let i = 0; i < ib.length; i++) {
 				if(pregos[ib[i]].line.existe){
 					
@@ -92,10 +78,6 @@ partes[2]= function(numeroPorVez = n_padrao){
 			}
 			ib = pregoBase.splice(0,numeroPorVez);
 			j=0;
-
-			//vetj = randomicVector(0,pregos.length-1);
-			//j = vetj.pop();
-
 			if(ib.length<=alet){
 				pregos.draw = ldraw;
 				pregos.endLines();
@@ -115,16 +97,3 @@ partes[2]= function(numeroPorVez = n_padrao){
 	};
 
 };
-function randomicVector(min,max){
-	let aux=[]
-	for (var i = min; i <= max; i++) {
-		aux.push(i);
-	}
-	let vet = [];
-	while(aux.length>0){
-		let i = int(random(0,aux.length));
-		vet.push(aux[i]);
-		aux.splice(i, 1); 
-	}
-	return vet;
-}

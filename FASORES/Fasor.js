@@ -20,10 +20,13 @@ class Fasor{
   draw(){
     push();
     stroke(this.color);
+    strokeWeight(tamanho_linha);
     line(this.x0,-this.y0,this.vet.x+this.x0,-this.vet.y-this.y0);
     translate(this.vet.x+this.x0,-this.vet.y-this.y0);
     line(0,0,this.s1.x,-this.s1.y);
     line(0,0,this.s2.x,-this.s2.y);
+    textSize(size_text);
+    text(this.name, 0,0);
     pop();
   }
 }
