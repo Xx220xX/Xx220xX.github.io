@@ -1,4 +1,6 @@
-let n = 140;
+let n = 160;
+let n_padrao = 10;
+
 let pregos;
 let radius;
 let radius_circle;
@@ -79,7 +81,7 @@ function draw() {
   push();
   pregos.draw();
   pop();
-   image(imgFINAL, 0, 0);
+   //image(imgFINAL, 0, 0);
   txt.html(acao + " raio: " + radius + "<p>"+iteracao+"</p>" + int(getFrameRate()) + " fps  phase: "+defasagem);
  if(stop){
  	return;

@@ -43,12 +43,12 @@ class Prego {
     ellipse(this.x,this.y, this.radius);
     if(this.line.existe=== true){
     	line(this.x,this.y,this.line.x,this.line.y);
-    }/*
+    }
     for (let i = 0;i<this.lines.length;i++) {
     	if(this.lines[i].existe=== true){
 	    	line(this.lines[i].x0,this.lines[i].y0,this.lines[i].x,this.lines[i].y);
 	    }
-    }*/
+    }
    // rect(0,0,this.radius,this.radius);
     pop();
   }
