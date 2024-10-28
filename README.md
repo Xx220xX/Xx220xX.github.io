@@ -1,3 +1,3 @@
-# Xx220xX.github.io
-este é meu play ground
-onde coloco todas minhas ideias hahahah
+## ⭐ GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=xx220xx&show_icons=true)
